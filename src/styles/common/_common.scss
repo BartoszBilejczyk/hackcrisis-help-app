@@ -1,0 +1,130 @@
+/* LOADERS */
+
+.loader div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  border-radius: globalVars(ui-default-border-radius--circle);
+  animation: loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.loader div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.loader div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.loader div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  max-width: globalVars(container);
+  width: calc(100% - 2 * #{globalVars(ui-default-measure3x)});
+  margin: 0 auto;
+  position: relative;
+
+  @include lg-up {
+    width: calc(100% - 100px);
+  }
+
+  &--wide {
+    // 2 * measure acts like padding
+    max-width: calc(100% - 2 * #{globalVars(ui-default-measure3x)});
+    width: calc(100% - 2 * #{globalVars(ui-default-measure3x)});
+  }
+}
+
+
+.ant-btn {
+  border: none;
+
+  svg.anticon-spin {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.ant-btn-primary,
+.ant-btn-primary:hover,
+.ant-btn-primary:active,
+.ant-btn-primary:focus {
+  background: color(primary);
+
+  svg.anticon-spin {
+    fill: white;
+  }
+}
+
+.ant-btn-default:hover {
+  color: color(primary);
+}
+
+.ant-tag {
+  color: white;
+  border: none;
+  font-weight: 600;
+  line-height: 22px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  pointer-events: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row)>td, .ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td, .ant-table-thead>tr.ant-table-row-hover:not(.ant-table-expanded-row)>td, .ant-table-thead>tr:hover:not(.ant-table-expanded-row)>td {
+  background: lighten(#6044E0, 50%);
+}
+
+.free-content-modal {
+  margin-top: 30px;
+  margin-left: -38px; // modal defaults override
+}
+
+.modal--no-buttons .ant-modal-confirm-btns {
+  display: none;
+}
+
+.ant-select {
+  min-width: 300px;
+}
+
+.ant-select-selection-selected-value {
+  line-height: 30px;
+}
+
+.anticon-spin {
+  fill: color(primary);
+  height: 30px;
+  width: 30px;
+}
+
+.ant-btn > .anticon + span {
+  height: 22px;
+}
+
+.ant-btn > .anticon {
+  position: relative;
+  top: 2px;
+}

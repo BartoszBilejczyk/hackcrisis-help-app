@@ -1,4 +1,11 @@
-# hack-crisis
+<p align="center">
+  <a href="https://charityprofile.org">
+    <img alt="Gatsby" src="https://charityprofile.org/charity-profile-logo.svg" width="80" />
+  </a>
+</p>
+<h1 align="center">
+  CharityApp
+</h1>
 
 ## Project setup
 ```

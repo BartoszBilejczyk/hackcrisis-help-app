@@ -1,32 +1,61 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="app">
+    <Navigation></Navigation>
+    <div class="app-content">
+      <router-view />
     </div>
-    <router-view/>
   </div>
 </template>
 
+<script>
+  import Navigation from '@/components/navigation/Navigation'
+  import providers from '@/common/providers';
+
+  import { mapState, mapActions } from 'easy-vuex-modules';
+  import { user } from '@/store';
+
+  export default {
+    name: 'App',
+    components: {
+      Navigation
+    },
+    provide: providers,
+    async mounted() {
+      if (!this.details.id) {
+        await this.hydrateUser();
+      }
+    },
+    computed: {
+      ...mapState(['user.details'])
+    },
+    methods: {
+      ...mapActions([user.actions.hydrateUser])
+    }
+  };
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  .app {
+    display: flex;
+    max-width: 100vw;
+    overflow-x: hidden;
 
-#nav {
-  padding: 30px;
+    @include md-up {
+      max-width: none;
+    }
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    &-content {
+      flex: 1;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      padding: globalVars(ui-default-measure3x) globalVars(ui-default-measure4x);
+      background: lighten(#F1F3F8, 2%);
+      padding-bottom: 80px;
 
-    &.router-link-exact-active {
-      color: #42b983;
+      @include md-up {
+        height: 100vh;
+        padding-bottom: globalVars(ui-default-measure3x);
+      }
     }
   }
-}
 </style>
